@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { ACTIONS } from "../context/ProductContext";
+import useProductContext from "../hooks/useProductContext";
 
-function AddProduct({ addProduct, products }) {
+function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
 
+  const { products, dispatch } = useProductContext();
+
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (!name || !price || !category) {
       return;
     }
@@ -15,15 +20,11 @@ function AddProduct({ addProduct, products }) {
       price,
       category,
     };
-    addProduct(newProduct);
-    event.preventDefault();
-
+    dispatch({ type: ACTIONS.ADD_PRODUCT, payload: { product: newProduct } });
     setName("");
     setPrice("");
     setCategory("");
   };
-
-  console.log(products);
 
   return (
     <>

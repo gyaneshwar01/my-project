@@ -1,7 +1,15 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { ACTIONS } from "../context/ProductContext";
+import useProductContext from "../hooks/useProductContext";
 
-function Products({ products, deleteProduct }) {
+function Products() {
+  const { products, dispatch } = useProductContext();
+
+  const handleDelete = (id) => {
+    dispatch({ type: ACTIONS.DELETE_PRODUCT, payload: { id: id } });
+  };
+
   return (
     <div className="container w-3/5 mx-auto">
       <table className="text-sm w-full text-left text-gray-500 dark:text-gray-400">
@@ -35,7 +43,7 @@ function Products({ products, deleteProduct }) {
               <td className="px-3 py-4">
                 <button
                   onClick={() => {
-                    deleteProduct(product.id);
+                    handleDelete(product.id);
                   }}
                 >
                   <AiFillDelete className="text-center text-xl" />

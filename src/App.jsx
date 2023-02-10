@@ -1,34 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Products from "./pages/Products";
 import AddProduct from "./pages/AddProduct";
 import "./App.css";
+import useProductContext from "./hooks/useProductContext";
 
 export default function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    if (localStorage.getItem("products")) {
-      setProducts(JSON.parse(localStorage.getItem("products")));
-    }
-  }, []);
-
-  const addProduct = (product) => {
-    const newProducts = [product, ...products];
-    setProducts(newProducts);
-    localStorage.setItem("products", JSON.stringify(newProducts));
-  };
-
-  const deleteProduct = (id) => {
-    const newProducts = products.filter((product) => product.id !== id);
-    setProducts(newProducts);
-    localStorage.setItem("products", JSON.stringify(newProducts));
-  };
-
+  const { products } = useProductContext();
+  console.log(products);
   return (
     <div className="overflow-hidden">
-      <AddProduct addProduct={addProduct} products={products} />
-      {products.length > 0 && (
-        <Products products={products} deleteProduct={deleteProduct} />
+      <AddProduct />
+      {products.length > 0 ? (
+        <Products />
+      ) : (
+        <h1 className="font-bold text-center my-3 text-2xl">
+          No Products Added!
+        </h1>
       )}
     </div>
   );
