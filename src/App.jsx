@@ -2,21 +2,38 @@ import React from "react";
 import Products from "./pages/Products";
 import AddProduct from "./pages/AddProduct";
 import "./App.css";
-import useProductContext from "./hooks/useProductContext";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import useUserContext from "./hooks/useUserContext";
 
 export default function App() {
-  const { products } = useProductContext();
-  console.log(products);
+  const { user } = useUserContext();
+  console.log(user);
+
   return (
     <div className="overflow-hidden">
-      <AddProduct />
-      {products.length > 0 ? (
-        <Products />
-      ) : (
-        <h1 className="font-bold text-center my-3 text-2xl">
-          No Products Added!
-        </h1>
-      )}
+      {user && <Navbar />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            user ? <Navigate to={"/products"} /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path={"/login"}
+          element={!user ? <Login /> : <Navigate to={"/products"} />}
+        />
+        <Route
+          path="/products"
+          element={user ? <Products /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/product/add"
+          element={user ? <AddProduct /> : <Navigate to={"/login"} />}
+        />
+      </Routes>
     </div>
   );
 }

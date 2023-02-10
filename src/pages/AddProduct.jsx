@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 import { ACTIONS } from "../context/ProductContext";
 import useProductContext from "../hooks/useProductContext";
 
@@ -24,6 +25,7 @@ function AddProduct() {
     setName("");
     setPrice("");
     setCategory("");
+    redirect("/products");
   };
 
   return (

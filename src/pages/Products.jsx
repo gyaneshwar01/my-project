@@ -10,8 +10,8 @@ function Products() {
     dispatch({ type: ACTIONS.DELETE_PRODUCT, payload: { id: id } });
   };
 
-  return (
-    <div className="container w-3/5 mx-auto">
+  return products.length > 0 ? (
+    <div className="container w-3/5 mx-auto my-10">
       <table className="text-sm w-full text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr className="text-xl">
@@ -54,6 +54,8 @@ function Products() {
         </tbody>
       </table>
     </div>
+  ) : (
+    <h1 className="font-bold text-center my-3 text-2xl">No Products Added!</h1>
   );
 }
 
