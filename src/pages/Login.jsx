@@ -13,7 +13,10 @@ function Login() {
     if (!email || !password) {
       return;
     }
-    const newUser = { email, password };
+
+    const isAdmin = email === "admin" && password === "admin";
+
+    const newUser = { email, password, isAdmin };
     dispatch({ type: ACTIONS.SET_USER, payload: { user: newUser } });
   };
   return (
@@ -30,10 +33,10 @@ function Login() {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your email
+                  Email or Username
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   id="email"
                   onChange={(e) => setEmail(e.target.value)}

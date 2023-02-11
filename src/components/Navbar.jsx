@@ -4,10 +4,11 @@ import { ACTIONS } from "../context/UserContext";
 import useUserContext from "../hooks/useUserContext";
 
 function Navbar() {
-  const { dispatch } = useUserContext();
+  const { user, dispatch } = useUserContext();
   const handleLogout = () => {
     dispatch({ type: ACTIONS.REMOVE_USER });
   };
+
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -33,10 +34,16 @@ function Navbar() {
           <Link to={"/product/add"} className="mr-5 hover:text-gray-900">
             Add Product
           </Link>
+          {user.isAdmin && (
+            <Link to={"/orders"} className="mr-5 hover:text-gray-900">
+              Orders
+            </Link>
+          )}
         </nav>
+        <p className="mr-4">{user.isAdmin ? "Admin" : user.email}</p>
         <button
           onClick={handleLogout}
-          className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          className="inline-flex items-center bg-pink-500 border-0 py-1 px-3 focus:outline-none hover:bg-pink-600 rounded text-base mt-4 md:mt-0 text-white"
         >
           Logout
         </button>

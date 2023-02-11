@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import useUserContext from "./hooks/useUserContext";
+import Orders from "./pages/Orders";
 
 export default function App() {
   const { user } = useUserContext();
@@ -32,6 +33,12 @@ export default function App() {
         <Route
           path="/product/add"
           element={user ? <AddProduct /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/orders"
+          element={
+            user && user.isAdmin ? <Orders /> : <Navigate to={"/products"} />
+          }
         />
       </Routes>
     </div>

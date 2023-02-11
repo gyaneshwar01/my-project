@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { redirect } from "react-router-dom";
 import { ACTIONS } from "../context/ProductContext";
 import useProductContext from "../hooks/useProductContext";
+import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+
+  const navigate = useNavigate();
 
   const { products, dispatch } = useProductContext();
 
@@ -25,7 +27,7 @@ function AddProduct() {
     setName("");
     setPrice("");
     setCategory("");
-    redirect("/products");
+    navigate("/products");
   };
 
   return (
