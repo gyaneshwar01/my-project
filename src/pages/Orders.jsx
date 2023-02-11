@@ -10,21 +10,21 @@ function Orders() {
   };
 
   return orders.length > 0 ? (
-    <div className="container w-[90%] mx-auto my-5">
+    <div className="container w-[80%] mx-auto my-5">
       <h1 className="text-2xl my-2 text-center font-bold mb-5">Orders</h1>
-      <table className="text-sm w-full text-left text-gray-500 dark:text-gray-400">
+      <table className="text-sm w-full text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr className="text-xl">
-            <th scope="col" className="px-3 py-3 w-1/3">
+            <th scope="col" className="px-3 py-3 w-1/4">
               Product name
             </th>
-            <th scope="col" className="px-3 py-3 w-1/3">
+            <th scope="col" className="px-3 py-3 w-1/4">
               Category
             </th>
-            <th scope="col" className="px-3 py-3 w-1/3">
+            <th scope="col" className="px-3 py-3 w-1/4">
               Price
             </th>
-            <th scope="col" className="px-3 py-3 w-1/3">
+            <th scope="col" className="px-3 py-3 w-1/4">
               Action
             </th>
           </tr>
