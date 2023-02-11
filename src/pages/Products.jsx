@@ -26,7 +26,7 @@ function Products() {
   console.log(orders);
 
   return products.length > 0 ? (
-    <div className="container w-3/5 mx-auto my-8">
+    <div className="container w-[90%] mx-auto my-8">
       <h1 className="text-2xl my-2 text-center font-bold mb-5">Products</h1>
       <table className="text-sm w-full text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -55,7 +55,7 @@ function Products() {
                 {product.name}
               </th>
               <td className="px-3 py-4">{product.category}</td>
-              <td className="px-3 py-4">{product.price}</td>
+              <td className="px-3 py-4">${product.price}</td>
               <td className="px-3 py-4">
                 {user.isAdmin ? (
                   <button

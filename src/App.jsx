@@ -13,7 +13,7 @@ export default function App() {
   console.log(user);
 
   return (
-    <div className="overflow-hidden">
+    <div>
       {user && <Navbar />}
       <Routes>
         <Route

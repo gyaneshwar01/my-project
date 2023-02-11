@@ -10,7 +10,7 @@ function Orders() {
   };
 
   return orders.length > 0 ? (
-    <div className="container w-3/5 mx-auto my-5">
+    <div className="container w-[90%] mx-auto my-5">
       <h1 className="text-2xl my-2 text-center font-bold mb-5">Orders</h1>
       <table className="text-sm w-full text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -39,7 +39,7 @@ function Orders() {
                 {product.name}
               </th>
               <td className="px-3 py-4">{product.category}</td>
-              <td className="px-3 py-4">{product.price}</td>
+              <td className="px-3 py-4">${product.price}</td>
               <td className="px-3 py-4">
                 <button
                   onClick={() => handleSell(product.id)}

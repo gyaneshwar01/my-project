@@ -28,6 +28,7 @@ function AddProduct() {
     setPrice("");
     setCategory("");
     navigate("/products");
+    console.log("Product added");
   };
 
   return (

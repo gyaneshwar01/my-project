@@ -40,7 +40,9 @@ function Navbar() {
             </Link>
           )}
         </nav>
-        <p className="mr-4">{user.isAdmin ? "Admin" : user.email}</p>
+        <p className="mr-4 font-bold text-xl">
+          {user.isAdmin ? "Admin" : user.email}
+        </p>
         <button
           onClick={handleLogout}
           className="inline-flex items-center bg-pink-500 border-0 py-1 px-3 focus:outline-none hover:bg-pink-600 rounded text-base mt-4 md:mt-0 text-white"
